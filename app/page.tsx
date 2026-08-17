@@ -1,69 +1,99 @@
-const services = [
-  "Home Visits",
-  "Dog Walking",
-  "Overnight Pet Sitting",
-  "Cat Care",
-  "Exotic Animal Care",
-  "Medication & Special Care"
-];
+"use client";
 
-const testimonials = [
+import { useState } from "react";
+
+const services = [
   {
-    quote: "Placeholder for real client testimonial",
-    name: "Client Name",
-    petName: "Pet Name",
-    featured: true
+    title: "Dog Sitting",
+    description: "Companionship, walks, feeding and personalised care while you&apos;re away."
   },
   {
-    quote: "Placeholder for real client testimonial",
-    name: "Client Name",
-    petName: "Pet Name",
-    featured: false
+    title: "Cat Sitting",
+    description: "In-home care, feeding, litter care and lots of love and attention."
   },
   {
-    quote: "Placeholder for real client testimonial",
-    name: "Client Name",
-    petName: "Pet Name",
-    featured: false
+    title: "Exotic Animal Care",
+    description: "Specialised care for birds, reptiles and other exotic pets."
   },
   {
-    quote: "Placeholder for real client testimonial",
-    name: "Client Name",
-    petName: "Pet Name",
-    featured: false
+    title: "Home Visits",
+    description: "Scheduled check-ins, feeding, medications* and companionship."
+  },
+  {
+    title: "Overnight / Extended Care",
+    description: "Longer stays tailored to your pet's needs."
+  },
+  {
+    title: "Initial Consultation",
+    description: "Let's get to know your pet and their routine before care begins."
   }
 ];
 
 export default function HomePage() {
+  const [reviews, setReviews] = useState<Array<{
+    id: string;
+    name: string;
+    petName: string;
+    animalType: string;
+    rating: number;
+    review: string;
+    approved: boolean;
+  }>>([]);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    petName: "",
+    animalType: "",
+    rating: 5,
+    review: ""
+  });
+
+  const handleReviewSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newReview = {
+      id: Date.now().toString(),
+      ...formData,
+      approved: false
+    };
+    setReviews([...reviews, newReview]);
+    setFormData({ name: "", petName: "", animalType: "", rating: 5, review: "" });
+    alert("Thank you! Your review will appear after approval.");
+  };
+
+  const approvedReviews = reviews.filter(r => r.approved);
+  const currentYear = new Date().getFullYear();
+
   return (
     <main className="page-shell">
       <header className="topbar container" id="top">
-        <a href="#top" className="brand-mark" aria-label="Kypseli Pet Sitting home">
-          <span className="brand-icon">K</span>
-          <span>Kypseli Pet Sitting</span>
+        <a href="/" className="brand-mark" aria-label="Kypseli Pet Sitting home">
+          <span className="brand-name">Kypseli</span>
+          <span className="brand-subtitle">PET SITTING</span>
         </a>
 
         <nav className="site-nav" aria-label="Main navigation">
-          <a href="#about">About</a>
+          <a href="/">Home</a>
+          <a href="/about">About</a>
           <a href="#services">Services</a>
-          <a href="#feedback">Client Feedback</a>
-          <a href="#contact">Contact</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#booking">Book</a>
         </nav>
 
-        <a href="#contact" className="button button-primary">
-          Book a Meet &amp; Greet
+        <a href="#booking" className="button button-primary">
+          Book a Consultation
         </a>
       </header>
 
       <section className="hero container">
         <div className="hero-copy">
-          <h1>Professional pet care, backed by veterinary expertise.</h1>
+          <h1>Melissanthi Kontoleon</h1>
+          <p className="hero-subtitle">Veterinary Technician with a degree in Zoology from the University of St Andrews.</p>
           <p className="lead">
-            With Veterinary Technician training, a degree in Zoology, and years of hands-on experience caring for dogs, cats and exotic animals across Athens.
+            Professional, personalised care for dogs, cats and exotic animals across Athens.
           </p>
           <div className="cta-row">
-            <a href="#contact" className="button button-primary">
-              Book a Meet &amp; Greet
+            <a href="#booking" className="button button-primary">
+              Book a Consultation
             </a>
             <a href="#services" className="button button-secondary">
               Explore Services
@@ -72,46 +102,124 @@ export default function HomePage() {
         </div>
 
         <div className="hero-image">
-          <img src="/images/melissanthi-dog.png" alt="Melissanthi with dog" />
+          <img src="/images/melissanthi-dog.jpg" alt="Melissanthi with dog" />
         </div>
       </section>
 
-      <section className="credentials-strip" id="credentials">
+      <section className="reviews section-spacing" id="reviews">
         <div className="container">
-          <div className="credentials-content">
-            <div className="credential-item">
-              <span className="credential-label">Veterinary Technician</span>
-            </div>
-            <div className="credential-divider" />
-            <div className="credential-item">
-              <span className="credential-label">BSc Zoology</span>
-            </div>
-            <div className="credential-divider" />
-            <div className="credential-item">
-              <span className="credential-label">Years of hands-on care</span>
-            </div>
-            <div className="credential-divider" />
-            <div className="credential-item">
-              <span className="credential-label">Dogs · Cats · Exotic Animals</span>
-            </div>
-          </div>
-        </div>
-      </section>
+          <p className="section-label">REVIEWS</p>
+          <h2>Trusted by pets. Recommended by their humans.</h2>
 
-      <section className="about section-spacing" id="about">
-        <div className="container about-inner">
-          <div className="about-image">
-            <img src="/images/melissanthi-vet.jpg" alt="Melissanthi" />
+          {approvedReviews.length > 0 ? (
+            <div className="reviews-grid">
+              {approvedReviews.map((review) => (
+                <div key={review.id} className="review-card">
+                  <div className="review-rating">
+                    {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
+                  </div>
+                  <p className="review-text">{review.review}</p>
+                  <div className="review-meta">
+                    <strong>{review.name}</strong>
+                    <span>{review.petName} · {review.animalType}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="reviews-empty-state">
+              <p><strong>Have we looked after your pet?</strong></p>
+              <p>If Melissanthi has cared for your animal, we&apos;d love to hear about your experience.</p>
+            </div>
+          )}
+
+          <div className="leave-review-cta">
+            <button 
+              onClick={() => {
+                const form = document.querySelector('.review-form') as HTMLElement;
+                form?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="button button-secondary"
+            >
+              Leave a Review
+            </button>
           </div>
-          <div className="about-copy">
-            <h2>Veterinary training meets hands-on care</h2>
-            <p>
-              Melissanthi brings a unique combination of professional expertise and genuine care to every pet she meets. Her training as a Veterinary Technician and degree in Zoology give her deep insight into animal health and behavior, while her years of hands-on experience across Athens have taught her what every individual pet needs to feel safe and loved.
-            </p>
-            <p>
-              Whether it&apos;s a daily walk, a home visit, or overnight care, she provides attentive, calm, and knowledgeable support for dogs, cats, and exotic animals.
-            </p>
-          </div>
+
+          <form onSubmit={handleReviewSubmit} className="review-form">
+            <h3>Leave a Review</h3>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+                placeholder="Your name"
+              />
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="petName">Pet Name</label>
+                <input
+                  id="petName"
+                  type="text"
+                  value={formData.petName}
+                  onChange={(e) => setFormData({ ...formData, petName: e.target.value })}
+                  required
+                  placeholder="Your pet's name"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="animalType">Animal Type</label>
+                <select
+                  id="animalType"
+                  value={formData.animalType}
+                  onChange={(e) => setFormData({ ...formData, animalType: e.target.value })}
+                  required
+                >
+                  <option value="">Select type</option>
+                  <option value="Dog">Dog</option>
+                  <option value="Cat">Cat</option>
+                  <option value="Exotic">Exotic</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="rating">Rating</label>
+                <select
+                  id="rating"
+                  value={formData.rating}
+                  onChange={(e) => setFormData({ ...formData, rating: Number(e.target.value) })}
+                >
+                  <option value="5">5 stars</option>
+                  <option value="4">4 stars</option>
+                  <option value="3">3 stars</option>
+                  <option value="2">2 stars</option>
+                  <option value="1">1 star</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="review">Review</label>
+              <textarea
+                id="review"
+                value={formData.review}
+                onChange={(e) => setFormData({ ...formData, review: e.target.value })}
+                required
+                placeholder="Tell us about your experience..."
+                rows={5}
+              />
+            </div>
+
+            <button type="submit" className="button button-primary">
+              Submit Review
+            </button>
+          </form>
         </div>
       </section>
 
@@ -120,80 +228,56 @@ export default function HomePage() {
           <h2>Services</h2>
           <div className="service-list" aria-label="Available pet care services">
             {services.map((service) => (
-              <div key={service} className="service-item">
-                <span>{service}</span>
+              <div key={service.title} className="service-item">
+                <h4>{service.title}</h4>
+                <p>{service.description}</p>
               </div>
             ))}
           </div>
+          <p className="services-footnote">*Medications administered according to owner/veterinary instructions and agreed care requirements.</p>
         </div>
       </section>
 
-      <section className="reasons container section-spacing">
-      </section>
-
-      <section className="testimonials section-spacing" id="feedback">
-        <div className="container">
-          <h2>Trusted by pets. Recommended by their humans.</h2>
-          <p className="testimonials-intro">Real client feedback coming soon.</p>
-
-          <div className="testimonial-layout">
-            {testimonials.map((item, index) => (
-              <figure
-                key={`${item.name}-${index}`}
-                className={`testimonial-item ${item.featured ? "featured" : ""}`}
-              >
-                <blockquote>{item.quote}</blockquote>
-                <figcaption>
-                  <strong>{item.name}</strong>
-                  <span>{item.petName}</span>
-                </figcaption>
-              </figure>
-            ))}
+      <footer className="site-footer" id="booking">
+        <div className="container footer-content">
+          <div className="footer-section">
+            <a href="/" className="brand-mark footer-brand">
+              <span className="brand-name">Kypseli</span>
+              <span className="brand-subtitle">PET SITTING</span>
+            </a>
+            <p className="footer-description">Professional pet care in Athens.</p>
+            <p className="footer-description">Based in Kypseli, caring for pets across Central Athens.</p>
           </div>
-        </div>
-      </section>
 
-      <section className="booking section-spacing" id="contact">
-        <div className="container booking-inner">
-          <div className="booking-copy">
-            <h2>Let&apos;s meet first.</h2>
-            <p>
-              A Meet & Greet is the best way to start. We&apos;ll meet, discuss your pet&apos;s routines and needs, and make sure they feel comfortable with me before we get started.
-            </p>
-            <div className="contact-methods">
-              <a href="https://wa.me/306912345678" target="_blank" rel="noreferrer" className="button button-primary">
-                Book a Meet &amp; Greet
+          <div className="footer-section">
+            <h3 className="footer-heading">Contact</h3>
+            <div className="contact-item">
+              <p className="contact-label">WhatsApp / Viber</p>
+              <a href="https://wa.me/306980770839" target="_blank" rel="noreferrer" className="contact-link">
+                +30 698 077 0839
               </a>
-              <a href="https://wa.me/306912345678" target="_blank" rel="noreferrer" className="button button-secondary">
-                WhatsApp
+            </div>
+            <div className="contact-item">
+              <p className="contact-label">Email</p>
+              <a href="mailto:sommers.mel@gmail.com" className="contact-link">
+                sommers.mel@gmail.com
               </a>
             </div>
           </div>
+
+          <div className="footer-section">
+            <h3 className="footer-heading">Navigation</h3>
+            <nav className="footer-nav" aria-label="Footer navigation">
+              <a href="/about">About</a>
+              <a href="#services">Services</a>
+              <a href="#reviews">Reviews</a>
+              <a href="#booking">Book a Consultation</a>
+            </nav>
+          </div>
         </div>
-      </section>
 
-      <footer className="site-footer">
-        <div className="container footer-inner">
-          <div>
-            <a href="#top" className="brand-mark footer-brand">
-              <span className="brand-icon">K</span>
-              <span>Kypseli Pet Sitting</span>
-            </a>
-            <p>Athens, Greece</p>
-          </div>
-
-          <nav className="footer-nav" aria-label="Footer navigation">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#feedback">Client Feedback</a>
-            <a href="#contact">Contact</a>
-          </nav>
-
-          <div className="socials" aria-label="Social links">
-            <a href="https://wa.me/306912345678" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a href="mailto:hello@kypselipetsitting.com">Email</a>
-            <a href="#" aria-label="Instagram placeholder">Instagram</a>
-          </div>
+        <div className="footer-bottom">
+          <p>&copy; {currentYear} Kypseli Pet Sitting. All rights reserved.</p>
         </div>
       </footer>
     </main>

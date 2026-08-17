@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kypseli Pet Sitting | Pet Sitter Athens",
-  description:
-    "Professional pet sitting in Athens, Greece. Home visits, dog walking, overnight care, and exotic pet care with a veterinary technician background.",
+  title: "Kypseli Pet Sitting | Professional Pet Care in Athens",
+  description: "Professional pet sitting in Kypseli and Central Athens by Melissanthi Kontoleon. Veterinary-trained care for dogs, cats and exotic animals.",
   keywords: [
     "Pet Sitting Athens",
     "Pet Sitter Athens",
@@ -12,12 +11,12 @@ export const metadata: Metadata = {
     "Exotic Pet Care Athens",
     "Dog walking Athens",
     "Cat sitting Athens",
-    "Pet care Athens Greece"
+    "Pet care Athens Greece",
+    "Veterinary Technician"
   ],
   openGraph: {
-    title: "Kypseli Pet Sitting",
-    description:
-      "Warm, professional pet care in Athens for dogs, cats, and exotic animals.",
+    title: "Kypseli Pet Sitting | Professional Pet Care in Athens",
+    description: "Professional pet sitting in Kypseli and Central Athens by Melissanthi Kontoleon. Veterinary-trained care for dogs, cats and exotic animals.",
     type: "website",
     locale: "en_GB",
     siteName: "Kypseli Pet Sitting"
