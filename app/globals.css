@@ -828,3 +828,40 @@ h4 {
 .care-loading{min-height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle,rgba(220,229,220,.9),transparent 40%)}.care-loading>span{font-size:3rem;color:var(--care-peach);animation:carePulse 1s infinite}.care-loading h2{font-size:clamp(2.5rem,5vw,4.5rem)}@keyframes carePulse{50%{transform:scale(1.2)}}
 .care-result{padding:clamp(3rem,6vw,6rem)}.care-result>header{margin-bottom:2.5rem}.care-result>header h2{font-size:clamp(3rem,6vw,6rem);margin:.8rem 0}.care-result>header>p:last-child{color:var(--care-sage)}.care-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}.care-result-grid article{padding:2rem;border:1px solid var(--care-line)}.care-plan-card,.care-human{background:#fff}.care-persona-card,.care-notes{background:var(--care-peach)}.care-result-grid article h3{font-size:clamp(1.8rem,3vw,2.8rem);margin:1.2rem 0 .75rem}.care-result-grid article>p:not(.care-label){color:#58665f}.care-plan-card>small{color:var(--care-sage);text-transform:uppercase;letter-spacing:.1em}.care-times{margin-top:1.5rem;border-top:1px solid var(--care-line)}.care-times>p{display:grid;grid-template-columns:42px 1fr;gap:.8rem;padding:1rem 0;margin:0;border-bottom:1px solid var(--care-line);font-size:.82rem}.care-times>p>b{font:italic 1rem var(--font-serif);color:#c88565}.care-times span strong{display:block;color:var(--care-ink)}.care-persona-card{position:relative;min-height:390px;padding-right:190px!important;overflow:hidden}.care-persona-card>img{position:absolute;width:190px;height:190px;object-fit:contain;right:0;bottom:-5px}.care-persona-card button{margin-top:1rem;padding:0 0 .25rem;border:0;border-bottom:1px solid var(--care-ink);background:none;color:var(--care-ink);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.care-notes>div{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}.care-notes>div p{margin:0;padding-top:1rem;border-top:1px solid var(--care-line);font-size:.78rem}.care-notes>div b{display:block;margin-bottom:.35rem}.care-human{display:flex;flex-direction:column;justify-content:center}.care-cta{margin-top:.65rem;padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;background:var(--care-ink);color:#fff}.care-cta h3{margin:.4rem 0 0;color:#fff;font-size:2rem}.care-cta>div:last-child{display:flex;gap:1.2rem;align-items:center}.care-cta a{padding:1rem;background:var(--care-peach);color:var(--care-ink);font-size:.75rem;font-weight:700;text-transform:uppercase}.care-cta button{border:0;border-bottom:1px solid #fff;background:none;color:#fff}
 @media(max-width:800px){.care{margin-top:4rem;border-left:0;border-right:0}.care-intro{min-height:auto;display:block;padding:3.5rem 1.3rem}.care-intro h2{font-size:3.2rem}.care-intro-art{min-height:320px}.care-intro-art img{height:280px}.care-quiz{display:block;min-height:auto}.care-quiz aside{min-height:150px;padding:1.2rem;display:grid;grid-template-columns:1fr auto}.care-quiz aside>div{grid-column:1/-1}.care-quiz aside h2{font-size:1.75rem;margin:.6rem 0}.care-quiz aside>b{grid-column:2;grid-row:1}.care-question{padding:3.4rem 1.2rem 1.5rem}.care-question h3{font-size:2.5rem}.care-options{grid-template-columns:1fr}.care-options button{min-height:68px}.care-personalities button{min-height:94px;grid-template-columns:76px 1fr 24px;gap:1rem}.care-personalities button>span{width:76px;height:72px}.care-personalities img{width:70px;height:70px}.care-actions{position:sticky;bottom:0;padding:1rem 0;background:rgba(251,248,241,.96)}.care-actions small{display:none}.care-primary{min-width:180px}.care-result{padding:3.5rem 1.2rem}.care-result>header h2{font-size:3.2rem}.care-result-grid{display:block}.care-result-grid article{margin-bottom:.65rem;padding:1.5rem}.care-persona-card{min-height:410px;padding-right:1.5rem!important;padding-bottom:180px!important}.care-persona-card>img{width:185px;height:185px}.care-notes>div{grid-template-columns:1fr}.care-cta{display:block;padding:1.5rem}.care-cta>div:last-child{display:block;margin-top:1.5rem}.care-cta a{display:block;text-align:center}.care-cta button{display:block;margin:1rem auto 0}}
+
+
+/* Streamlined care result and optional pet photo */
+.care-photo-upload{position:relative;max-width:430px!important;margin:.75rem 0 1rem!important;padding:1rem;border:1px dashed var(--care-sage);background:rgba(255,255,255,.72);cursor:pointer}
+.care-photo-upload>span{display:block;font-size:.82rem;font-weight:800}
+.care-photo-upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.care-photo-upload em{display:block;max-width:100%;margin-top:.35rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--care-sage);font-size:.72rem;font-style:normal;font-weight:500}
+.care-result-simple{grid-template-columns:1fr 1fr}
+.care-result-simple article{min-height:520px}
+.care-plan-card h3,.care-persona-card h3{font-weight:700!important;line-height:1.02}
+.care-verdict,.care-persona-verdict{font-size:1.05rem!important;line-height:1.55;font-weight:600;color:var(--care-ink)!important}
+.care-verdict strong{display:inline;font-weight:800;color:var(--care-ink)}
+.care-times>p{grid-template-columns:52px 1fr;align-items:start;font-size:.9rem;line-height:1.5}
+.care-times>p>b{font:normal 1.55rem/1 sans-serif;color:var(--care-ink)}
+.care-times span strong{margin-bottom:.28rem;font-size:.98rem;font-weight:800}
+.care-persona-card{padding-right:2rem!important;padding-bottom:2rem!important}
+.care-persona-card>.care-character-fallback{position:absolute;width:210px;height:210px;right:0;bottom:-5px;object-fit:contain}
+.care-persona-card>.care-character-badge{position:absolute;width:105px;height:105px;right:1rem;top:1rem;bottom:auto;object-fit:contain;z-index:3}
+.care-persona-card.has-pet-photo{padding-bottom:2rem!important}
+.care-persona-card>.care-pet-photo{position:relative;width:100%;height:280px;right:auto;bottom:auto;margin:1rem 0 1.2rem;display:block;object-fit:cover;border:1px solid rgba(36,50,44,.18)}
+.care-traits{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.15rem 0}
+.care-traits strong{padding:.55rem .7rem;background:rgba(255,255,255,.55);border:1px solid rgba(36,50,44,.16);font-size:.75rem;font-weight:800;line-height:1.25}
+.care-persona-card:not(.has-pet-photo) .care-traits{max-width:70%}
+.care-persona-card:not(.has-pet-photo)>button{position:relative;z-index:2}
+@media(max-width:800px){
+  .care-photo-upload{max-width:none!important}
+  .care-actions{padding:.65rem 0}
+  .care-actions .care-primary{width:100%;min-width:0}
+  .care-result-simple article{min-height:auto}
+  .care-persona-card{min-height:520px;padding-right:1.5rem!important;padding-bottom:180px!important}
+  .care-persona-card.has-pet-photo{min-height:auto;padding-bottom:1.5rem!important}
+  .care-persona-card>.care-pet-photo{height:300px}
+  .care-persona-card>.care-character-badge{width:88px;height:88px;right:.6rem;top:.6rem}
+  .care-persona-card>.care-character-fallback{width:185px;height:185px}
+  .care-persona-card:not(.has-pet-photo) .care-traits{max-width:72%}
+  .care-verdict,.care-persona-verdict{font-size:1rem!important}
+}
