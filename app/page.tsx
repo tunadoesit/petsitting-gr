@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from "react";\nimport CarePlan from "./CarePlan";
 
 const services = [
   {
@@ -238,7 +238,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="site-footer" id="booking">
+      <CarePlan />\n\n      <footer className="site-footer" id="booking">
         <div className="container footer-content">
           <div className="footer-section">
             <a href="/" className="brand-mark footer-brand">
