@@ -865,3 +865,37 @@ h4 {
   .care-persona-card:not(.has-pet-photo) .care-traits{max-width:72%}
   .care-verdict,.care-persona-verdict{font-size:1rem!important}
 }
+
+
+/* Focused mobile quiz and direct social sharing */
+.care-social-share{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:1.2rem}
+.care-persona-card .care-social-share button{margin:0;padding:.85rem 1rem;border:1px solid var(--care-ink);background:var(--care-ink);color:#fff;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.care-persona-card .care-social-share button+button{background:rgba(255,255,255,.58);color:var(--care-ink)}
+.care-share-status{display:block;margin-top:.6rem;color:var(--care-ink);font-weight:700}
+@media(max-width:800px){
+  .care-intro{padding:1.7rem 1.1rem 1.4rem;min-height:auto}
+  .care-intro h2{font-size:2.35rem;line-height:.96;margin:.7rem 0 .8rem}
+  .care-intro>div>p:not(.care-label){margin:.5rem 0;font-size:.9rem;line-height:1.45}
+  .care-intro label{margin:.8rem 0 .55rem}
+  .care-intro input{height:46px}
+  .care-intro .care-photo-upload{padding:.72rem .8rem;margin:.55rem 0 .7rem!important}
+  .care-intro>.care-intro-art{display:none}
+  .care-intro .care-primary{width:100%;padding:.85rem 1rem}
+  .care-intro>div>small{margin-top:.5rem;font-size:.68rem}
+  .care-quiz{position:fixed;inset:0;z-index:9999;width:100%;height:100dvh;max-height:100dvh;overflow-y:auto;overscroll-behavior:contain;background:var(--care-paper);display:block}
+  .care-quiz aside{position:sticky;top:0;z-index:4;min-height:104px;padding:.75rem 1rem;grid-template-columns:1fr auto;background:var(--care-ink)}
+  .care-quiz aside h2{font-size:1.3rem;margin:.3rem 0}
+  .care-quiz aside .care-label{margin:.2rem 0}
+  .care-question{min-height:calc(100dvh - 104px);padding:2rem 1rem 1rem}
+  .care-question h3{font-size:2.15rem;line-height:1;margin:.55rem 0 .35rem}
+  .care-question>p:not(.care-label){margin:.35rem 0;font-size:.88rem}
+  .care-options{gap:.5rem;margin:1rem 0}
+  .care-options button{min-height:58px;padding:.55rem .75rem}
+  .care-personalities button{min-height:82px;grid-template-columns:68px 1fr 24px}
+  .care-personalities button>span{width:66px;height:62px}
+  .care-personalities img{width:62px;height:62px}
+  .care-actions{z-index:5;margin-top:.5rem;padding:.55rem 0;background:rgba(251,248,241,.98)}
+  .care-loading{position:fixed;inset:0;z-index:9999;min-height:100dvh;background:var(--care-paper)}
+  .care-social-share{display:grid;grid-template-columns:1fr;gap:.5rem}
+  .care-persona-card .care-social-share button{width:100%;padding:.9rem .75rem;text-align:center}
+}
