@@ -41,6 +41,26 @@ export default function HomePage() {
     approved: boolean;
   }>>([]);
 
+  const [formData, setFormData] = useState({
+    name: "",
+    petName: "",
+    animalType: "",
+    rating: 5,
+    review: ""
+  });
+
+  const handleReviewSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newReview = {
+      id: Date.now().toString(),
+      ...formData,
+      approved: false
+    };
+    setReviews([...reviews, newReview]);
+    setFormData({ name: "", petName: "", animalType: "", rating: 5, review: "" });
+    alert("Thank you! Your review will appear after approval.");
+  };
+
   const approvedReviews = reviews.filter(r => r.approved);
   const currentYear = new Date().getFullYear();
 
@@ -57,18 +77,25 @@ export default function HomePage() {
           <a href="/about">About</a>
           <a href="#services">Services</a>
           <a href="#reviews">Reviews</a>
+          <a href="#booking">Book</a>
         </nav>
 
+        <a href="#booking" className="button button-primary">
+          Book a Consultation
+        </a>
       </header>
 
       <section className="hero container">
         <div className="hero-copy">
-          <h1>Mel Sommers</h1>
+          <h1>Melissanthi Kontoleon</h1>
           <p className="hero-subtitle">Veterinary Technician with a degree in Zoology from the University of St Andrews.</p>
           <p className="lead">
             Professional, personalised care for dogs, cats and exotic animals across Athens.
           </p>
           <div className="cta-row">
+            <a href="#booking" className="button button-primary">
+              Book a Consultation
+            </a>
             <a href="#services" className="button button-secondary">
               Explore Services
             </a>
@@ -76,7 +103,7 @@ export default function HomePage() {
         </div>
 
         <div className="hero-image">
-          <img src="/images/melissanthi-dog.jpg" alt="Mel Sommers with dog" />
+          <img src="/images/melissanthi-dog.jpg" alt="Melissanthi with dog" />
         </div>
       </section>
 
@@ -103,10 +130,97 @@ export default function HomePage() {
           ) : (
             <div className="reviews-empty-state">
               <p><strong>Have we looked after your pet?</strong></p>
-              <p>If Mel has cared for your animal, we&apos;d love to hear about your experience.</p>
+              <p>If Melissanthi has cared for your animal, we&apos;d love to hear about your experience.</p>
             </div>
           )}
 
+          <div className="leave-review-cta">
+            <button 
+              onClick={() => {
+                const form = document.querySelector('.review-form') as HTMLElement;
+                form?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="button button-secondary"
+            >
+              Leave a Review
+            </button>
+          </div>
+
+          <form onSubmit={handleReviewSubmit} className="review-form">
+            <h3>Leave a Review</h3>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+                placeholder="Your name"
+              />
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="petName">Pet Name</label>
+                <input
+                  id="petName"
+                  type="text"
+                  value={formData.petName}
+                  onChange={(e) => setFormData({ ...formData, petName: e.target.value })}
+                  required
+                  placeholder="Your pet's name"
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="animalType">Animal Type</label>
+                <select
+                  id="animalType"
+                  value={formData.animalType}
+                  onChange={(e) => setFormData({ ...formData, animalType: e.target.value })}
+                  required
+                >
+                  <option value="">Select type</option>
+                  <option value="Dog">Dog</option>
+                  <option value="Cat">Cat</option>
+                  <option value="Exotic">Exotic</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="rating">Rating</label>
+                <select
+                  id="rating"
+                  value={formData.rating}
+                  onChange={(e) => setFormData({ ...formData, rating: Number(e.target.value) })}
+                >
+                  <option value="5">5 stars</option>
+                  <option value="4">4 stars</option>
+                  <option value="3">3 stars</option>
+                  <option value="2">2 stars</option>
+                  <option value="1">1 star</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="review">Review</label>
+              <textarea
+                id="review"
+                value={formData.review}
+                onChange={(e) => setFormData({ ...formData, review: e.target.value })}
+                required
+                placeholder="Tell us about your experience..."
+                rows={5}
+              />
+            </div>
+
+            <button type="submit" className="button button-primary">
+              Submit Review
+            </button>
+          </form>
         </div>
       </section>
 
@@ -141,7 +255,16 @@ export default function HomePage() {
           <div className="footer-section">
             <h3 className="footer-heading">Contact</h3>
             <div className="contact-item">
-              <p className="contact-link">Coming soon!</p>
+              <p className="contact-label">WhatsApp / Viber</p>
+              <a href="https://wa.me/306980770839" target="_blank" rel="noreferrer" className="contact-link">
+                +30 698 077 0839
+              </a>
+            </div>
+            <div className="contact-item">
+              <p className="contact-label">Email</p>
+              <a href="mailto:sommers.mel@gmail.com" className="contact-link">
+                sommers.mel@gmail.com
+              </a>
             </div>
           </div>
 
@@ -151,6 +274,7 @@ export default function HomePage() {
               <a href="/about">About</a>
               <a href="#services">Services</a>
               <a href="#reviews">Reviews</a>
+              <a href="#booking">Book a Consultation</a>
             </nav>
           </div>
         </div>
