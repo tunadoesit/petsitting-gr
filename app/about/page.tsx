@@ -41,17 +41,21 @@ export default function AboutPage() {
           <a href="/about">About</a>
           <a href="/#services">Services</a>
           <a href="/#reviews">Reviews</a>
+          <a href="/#booking">Book</a>
         </nav>
 
+        <a href="/#booking" className="button button-primary">
+          Book a Consultation
+        </a>
       </header>
 
       <section className="about-hero container">
         <div className="about-hero-copy">
-          <h1>Hi, I&apos;m Mel.</h1>
+          <h1>Hi, I&apos;m Melissanthi.</h1>
           <h2>Animals have shaped almost every chapter of my life.</h2>
         </div>
         <div className="about-hero-image">
-          <img src="/images/melissanthi-vet.JPG" alt="Mel Sommers" />
+          <img src="/images/melissanthi-vet.JPG" alt="Melissanthi" />
         </div>
       </section>
 
@@ -117,7 +121,7 @@ export default function AboutPage() {
               For me, great pet sitting is more than feeding and walks. It&apos;s getting to know your pet, noticing the little things and making sure they feel completely at home while you&apos;re away.
             </p>
             <div className="author-signature">
-              <strong>Mel Sommers</strong>
+              <strong>Melissanthi Kontoleon</strong>
               <span>Pet Sitter · Veterinary Technician · Zoology Graduate</span>
             </div>
           </div>
@@ -138,7 +142,16 @@ export default function AboutPage() {
           <div className="footer-section">
             <h3 className="footer-heading">Contact</h3>
             <div className="contact-item">
-              <p className="contact-link">Coming soon!</p>
+              <p className="contact-label">WhatsApp / Viber</p>
+              <a href="https://wa.me/306980770839" target="_blank" rel="noreferrer" className="contact-link">
+                +30 698 077 0839
+              </a>
+            </div>
+            <div className="contact-item">
+              <p className="contact-label">Email</p>
+              <a href="mailto:sommers.mel@gmail.com" className="contact-link">
+                sommers.mel@gmail.com
+              </a>
             </div>
           </div>
 
@@ -148,6 +161,7 @@ export default function AboutPage() {
               <a href="/about">About</a>
               <a href="/#services">Services</a>
               <a href="/#reviews">Reviews</a>
+              <a href="/#booking">Book a Consultation</a>
             </nav>
           </div>
         </div>
