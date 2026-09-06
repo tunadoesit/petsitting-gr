@@ -1,6 +1,6 @@
 # Kypseli Pet Sitting
 
-A premium one-page pet sitting website for Melissanthi Kontoleon, based in Athens, Greece. Built with Next.js and designed to feel warm, editorial, and trustworthy.
+A premium one-page pet sitting website for Mel Sommers, based in Athens, Greece. Built with Next.js and designed to feel warm, editorial, and trustworthy.
 
 ## Tech stack
 
