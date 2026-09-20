@@ -872,6 +872,12 @@ h4 {
 .care-persona-card .care-social-share button{margin:0;padding:.85rem 1rem;border:1px solid var(--care-ink);background:var(--care-ink);color:#fff;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
 .care-persona-card .care-social-share button+button{background:rgba(255,255,255,.58);color:var(--care-ink)}
 .care-share-status{display:block;margin-top:.6rem;color:var(--care-ink);font-weight:700}
+.care-field{display:grid;gap:.5rem;margin:1rem 0;color:var(--care-ink);font-size:.82rem;font-weight:800}
+.care-field select,.care-field textarea{width:100%;padding:.9rem 1rem;border:1px solid var(--care-line);border-radius:0;background:#fff;color:var(--care-ink);font:inherit}
+.care-field select{max-width:180px}.care-field textarea{min-height:105px;resize:vertical;line-height:1.5}
+.care-pet-types strong{line-height:1.25}.care-primary:disabled{cursor:not-allowed;opacity:.45}
+.care-species-emoji{position:absolute;right:1.2rem;bottom:1rem;display:grid;width:180px;height:180px;place-items:center;border-radius:50%;background:rgba(255,255,255,.46);font-size:7rem;line-height:1}
+.care-species-emoji-badge{top:1rem;right:1rem;bottom:auto;width:96px;height:96px;font-size:3.5rem;z-index:3}
 @media(max-width:800px){
   .care-intro{padding:1.7rem 1.1rem 1.4rem;min-height:auto}
   .care-intro h2{font-size:2.35rem;line-height:.96;margin:.7rem 0 .8rem}
